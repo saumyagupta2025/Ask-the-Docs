@@ -90,27 +90,58 @@ def handle_user_input(user_question):
     st.write(response["output_text"])
 
 
+# def main():
+#     st.set_page_config(page_title="Chat with multiple PDFs", page_icon=":books:")
+#     st.header("Chat with multiple PDFs using Gemini Pro")
+
+#     user_question = st.text_input("Ask a question from the PDF files:")
+
+
+#     if user_question:
+#         handle_user_input(user_question)
+
+#     with st.sidebar:
+#         st.title("Menu:")
+#         pdf_docs = st.file_uploader("Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
+
+#         if st.button("Submit & Process"):
+#             with st.spinner("Processing"):
+#                 raw_text = get_pdf_text(pdf_docs)
+#                 text = get_chunks(raw_text)
+#                 get_vector_store(text)
+#                 st.success("Done! You can ask questions from the PDFs now.")
+
+
+import streamlit as st
+
 def main():
-    st.set_page_config(page_title="Chat with multiple PDFs", page_icon=":books:")
-    st.header("Chat with multiple PDFs using Gemini Pro")
+    # Set page configuration with a fun icon and title
+    st.set_page_config(page_title="Gemini Pro: Chat with PDFs", page_icon="📚")
+    
+    # Add a header with some style
+    st.markdown("<h1 style='text-align: center; color: #4A90E2;'>📖 Chat with Your PDFs Using Gemini Pro!</h1>", unsafe_allow_html=True)
 
-    user_question = st.text_input("Ask a question from the PDF files:")
-
+    
+    # User question input
+    user_question = st.text_input("Curious about something in the PDFs? Ask away:")
 
     if user_question:
         handle_user_input(user_question)
 
+    # Sidebar menu
     with st.sidebar:
-        st.title("Menu:")
-        pdf_docs = st.file_uploader("Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
+        st.title("📂 Your PDF Assistant")
+        st.write("Upload your PDF documents below and click 'Submit & Process' to start exploring!")
+        
+        pdf_docs = st.file_uploader("Drag and drop PDFs or click to upload", accept_multiple_files=True)
 
         if st.button("Submit & Process"):
-            with st.spinner("Processing"):
+            with st.spinner("Extracting insights... Please wait a moment."):
                 raw_text = get_pdf_text(pdf_docs)
                 text = get_chunks(raw_text)
                 get_vector_store(text)
-                st.success("Done! You can ask questions from the PDFs now.")
-
+                st.success("🎉 Ready to roll! Start asking questions from your PDFs now.")
 
 if __name__ == "__main__":
     main()
+
