@@ -1,7 +1,5 @@
 # Ask The Docs
 
-![Ask-the-Docs Logo](https://your-image-url.com/your-header-image.png)
-
 **Ask-the-Docs** is an interactive Streamlit application that allows you to chat with multiple PDF files. Upload your PDF documents and ask questions directly to extract valuable insights from them.  The app leverages the power of the **Gemini Pro API** to provide accurate and context-aware responses from your documents, all within a sleek, modern interface.
 
 
